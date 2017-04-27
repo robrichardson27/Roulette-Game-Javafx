@@ -19,17 +19,22 @@ public class Roulette2 extends Application {
     // Scene size.
     private static final int SIZE = 800;
 
+    // boolean betting means betting can take place.
+    // set to false when spin.
+    // private boolean betting = true;
+
     private Ball ball = new Ball();
     private Wheel wheel = new Wheel();
     private Spin spin = new Spin();
 
     public void start(Stage stage) {
+        stage.setTitle("Roulette");
         wheel.makeWheel();
 
-        Button b = new Button("Spin");
-        Group root = new Group(wheel.getWheel(), ball.getShape(), b);
+        Button buttonSpin = new Button("Spin");
+        Group root = new Group(wheel.getWheel(), ball.getShape(), buttonSpin);
         Scene scene = new Scene(root, 1600, 800, Color.DARKGREEN);
-        b.setOnAction(this::press);
+        buttonSpin.setOnAction(this::press);
         stage.setScene(scene);
         stage.show();
     }

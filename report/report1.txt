@@ -23,3 +23,15 @@ for (Number n : Number.values()) {
     if (n.getNumber() == number) {
         return n.getAngle();
     }
+
+The next task was to split the classes up I now have:
+Roulette - main stage displays all components and runs animation.
+Wheel - draws all component of the wheel, returned as a group to Roulette.
+Ball - initialises the ball and sets its rotation - returns shape. 
+Spin - generates a random number between 0 and 36 - returns angle for animation, number and color for logic
+Number - enum class containing all numbers and their corresponding angle and colour.
+
+Report 2
+
+Next task is to create the Table class to handle a player placing bets on a grid.
+
