@@ -27,19 +27,19 @@ public class Roulette2 extends Application {
 
         Button b = new Button("Spin");
         Group root = new Group(wheel.getWheel(), ball.getShape(), wheel.getText(), b);
-        Scene scene = new Scene(root, SIZE, SIZE);
+        Scene scene = new Scene(root, 1600, 800);
         b.setOnAction(this::press);
         stage.setScene(scene);
         stage.show();
     }
-
+    // Runs the logic for a wheel spin.
     private void press(ActionEvent e) {
         spin.go();
         System.out.println(""+spin.getNumber());
         System.out.println(""+spin.getColour());
         animate();
     }
-
+    // Animation for spinning ball.
     private void animate() {
         Duration d = Duration.seconds(3);
         RotateTransition rt = new RotateTransition(d, ball.getShape());

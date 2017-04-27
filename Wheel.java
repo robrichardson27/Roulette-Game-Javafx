@@ -9,8 +9,10 @@ import javafx.scene.*;
 
 public class Wheel {
 
-    // Angle per segment.
+    // Angle per segment of roulette wheel.
     private static final double ANGLE = 9.72972973f;
+    // Sets the start angle for drawing the wheel segments.
+    private static final double START_ANGLE = 85.135135135f;
 
     private Group wheel = new Group();
     private Group text = new Group();
@@ -27,10 +29,9 @@ public class Wheel {
     public Group getText() {
         return text;
     }
-
+    // Draws each segment as an arc, 0 is set to North.
     private void drawSegments() {
-        // Sets the start angle for drawing the wheel segments.
-        double angle = 85.135135135f;
+        double startAngle = START_ANGLE;
         for (int i = 0; i < 37; i++) {
             Arc arc = new Arc();
             if (i == 0) {
@@ -46,15 +47,16 @@ public class Wheel {
             arc.setCenterY(400.0f);
             arc.setRadiusX(300.0f);
             arc.setRadiusY(300.0f);
-            arc.setStartAngle(angle);
+            arc.setStartAngle(startAngle);
             arc.setLength(ANGLE);
             arc.setType(ArcType.ROUND);
             wheel.getChildren().add(arc);
-            angle += ANGLE;
+            startAngle += ANGLE;
         }
     }
-
+    // Draws the numbers on top of the segments.
     private void drawNumbers() {
+        // Iterates through enum class of numbers.
         for (Number n : Number.values()) {
             Text textNode = new Text(""+n.getNumber());
             int centreX = 400;
