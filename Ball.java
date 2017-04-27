@@ -10,8 +10,8 @@ public class Ball {
 
     Ball() {
         ball.setFill(Color.GOLD);
-        ball.setTranslateY(250);
-        ball.getTransforms().add(new Translate(0, 250));
+        ball.setTranslateY(260);
+        ball.getTransforms().add(new Translate(0, 240));
     }
 
     public Circle getShape() {

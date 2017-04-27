@@ -8,6 +8,7 @@ import javafx.util.*;
 import javafx.scene.control.*;
 import javafx.event.*;
 import javafx.scene.transform.*;
+import javafx.scene.paint.Color;
 
 public class Roulette2 extends Application {
 
@@ -26,8 +27,8 @@ public class Roulette2 extends Application {
         wheel.makeWheel();
 
         Button b = new Button("Spin");
-        Group root = new Group(wheel.getWheel(), ball.getShape(), wheel.getText(), b);
-        Scene scene = new Scene(root, 1600, 800);
+        Group root = new Group(wheel.getWheel(), ball.getShape(), b);
+        Scene scene = new Scene(root, 1600, 800, Color.DARKGREEN);
         b.setOnAction(this::press);
         stage.setScene(scene);
         stage.show();
