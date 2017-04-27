@@ -1,0 +1,25 @@
+Report 1
+
+The aim of this project is to build a roulette casino game.
+
+To achieve this an incremental approach will be taken.
+
+The first task is to build a simple roulette wheel with a ball animation.
+Initially I have used a jpg image as a background. However I decided to remove
+this and create my own wheel oject out of arcs.
+
+Ball is animated by RotateTransition() method, however as I set the setToAngle()
+to a random number the ball can stop between the roulette pockets. To rectify this
+I changed the random number generator's range to select a number between 0 and
+36, then set the angle that corresponds to that numbers position on the wheel using
+a really big and ugly switch statement e.g pocket 0 = 180deg. This will allow me to easily apply the
+game logic to process a winning bit. Will look into possible ways to refactor this.
+
+I decided to create an enum class for number that contains the number value,
+angle value and colour. Thus the switch statement can be removed and replaced with
+an iterator that loops through all the enum types and matches witht the random
+selected number and returns the angle:
+for (Number n : Number.values()) {
+    if (n.getNumber() == number) {
+        return n.getAngle();
+    }
