@@ -7,7 +7,7 @@ public class Spin {
 
     private int number;
     private int angle;
-    private String colour;
+    private String color;
 
     public void go() {
         getRandomNum();
@@ -21,16 +21,16 @@ public class Spin {
         return angle;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
     // Iterates through enum class to set number, angle(for animation of ball)
-    // and colour of the result.
+    // and color of the result.
     private void getRandomNum() {
         number = (int)(Math.random()*(MAX - MIN) + MIN);
         for (Number n : Number.values()) {
             if (n.getNumber() == number) {
-                colour = n.getColour();
+                color = n.getColor();
                 angle = n.getAngle();
             }
         }

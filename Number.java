@@ -41,12 +41,12 @@ public enum Number {
 
     int number;
     int angle;
-    String colour;
+    String color;
 
     Number(int n, int a, String c) {
         this.number = n;
         this.angle = a;
-        this.colour = c;
+        this.color = c;
     }
 
     public int getNumber() {
@@ -57,7 +57,7 @@ public enum Number {
         return angle;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 }

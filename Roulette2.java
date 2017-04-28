@@ -26,13 +26,15 @@ public class Roulette2 extends Application {
     private Ball ball = new Ball();
     private Wheel wheel = new Wheel();
     private Spin spin = new Spin();
+    private Table table = new Table();
 
     public void start(Stage stage) {
         stage.setTitle("Roulette");
         wheel.makeWheel();
+        table.makeTable();
 
         Button buttonSpin = new Button("Spin");
-        Group root = new Group(wheel.getWheel(), ball.getShape(), buttonSpin);
+        Group root = new Group(wheel.getWheel(), table.getTable(), ball.getShape(), buttonSpin);
         Scene scene = new Scene(root, 1600, 800, Color.DARKGREEN);
         buttonSpin.setOnAction(this::press);
         stage.setScene(scene);
@@ -42,7 +44,7 @@ public class Roulette2 extends Application {
     private void press(ActionEvent e) {
         spin.go();
         System.out.println(""+spin.getNumber());
-        System.out.println(""+spin.getColour());
+        System.out.println(""+spin.getColor());
         animate();
     }
     // Animation for spinning ball.
