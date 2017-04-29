@@ -27,7 +27,7 @@ for (Number n : Number.values()) {
 The next task was to split the classes up I now have:
 Roulette - main stage displays all components and runs animation.
 Wheel - draws all component of the wheel, returned as a group to Roulette.
-Ball - initialises the ball and sets its rotation - returns shape. 
+Ball - initialises the ball and sets its rotation - returns shape.
 Spin - generates a random number between 0 and 36 - returns angle for animation, number and color for logic
 Number - enum class containing all numbers and their corresponding angle and colour.
 
@@ -35,3 +35,9 @@ Report 2
 
 Next task is to create the Table class to handle a player placing bets on a grid.
 
+I have i initially created this using rectangles and set their color and values
+according to the enum class Number.
+
+I have decided to pause on the implementation to review how my classes are interacting with one another.
+I need to refactor my Numbers class as numbers contain all the information for the logic and graphic of the
+game. I am going to refactor the Number class and enable auto-testing.

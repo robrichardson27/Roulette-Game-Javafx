@@ -1,63 +1,152 @@
+/* Number class contains all data pertaining to each number on the
+roulette board, including graphics data for drawing the wheel and table. */
 
-public enum Number {
+public class Number {
 
-    ZERO (0, 180, "G"),
-    ONE (1, 44, "R"),
-    TWO (2, 238, "B"),
-    THREE (3, 160, "R"),
-    FOUR (4, 219, "B"),
-    FIVE (5, 5, "R"),
-    SIX (6, 277, "B"),
-    SEVEN (7, 122, "R"),
-    EIGHT (8, 336, "B"),
-    NINE (9, 83, "R"),
-    TEN (10, 355, "B"),
-    ELEVEN (11, 316, "B"),
-    TWELVE (12, 141, "R"),
-    THIRTEEN (13, 297, "B"),
-    FOURTEEN (14, 63, "R"),
-    FIFTEEN (15, 199, "B"),
-    SIXTEEN (16, 24, "R"),
-    SEVENTEEN (17, 258, "B"),
-    EIGHTEEN (18, 102, "R"),
-    NINETEEN (19, 209, "R"),
-    TWENTY (20, 54, "B"),
-    TWENTY_ONE (21, 229, "R"),
-    TWENTY_TWO (22, 92, "B"),
-    TWENTY_THREE (23, 345, "R"),
-    TWENTY_FOUR (24, 15, "B"),
-    TWENTY_FIVE (25, 248, "R"),
-    TWENTY_SIX (26, 170, "B"),
-    TWNETY_SEVEN (27, 287, "R"),
-    TWENT_EIGHT (28, 131, "B"),
-    TWENTY_NINE (29, 112, "B"),
-    THIRTY (30, 326, "R"),
-    THIRTY_ONE (31, 73, "B"),
-    THIRTY_TWO (32, 190, "R"),
-    THIRTY_THREE (33, 34, "B"),
-    THIRTY_FOUR (34, 268, "R"),
-    THIRTY_FIVE (35, 151, "B"),
-    THIRTY_SIX (36, 306, "R");
+    // Game logic data.
+    private int number;
+    private String color;
+    private boolean odd;
+    private boolean firstEighteen;
+    private int section;
+    private int column;
 
-    int number;
-    int angle;
-    String color;
+    // Graphics data.
+    private int wheelAngle;
+    private double tablePosX;
+    private double tablePosY;
 
-    Number(int n, int a, String c) {
-        this.number = n;
-        this.angle = a;
-        this.color = c;
+    // Empty constructor for returning results of a bet.
+    public Number() {}
+
+    // Constructor used for initialising the numbers with their data.
+    public Number(int num, String col, int angle, double x, double y) {
+        this.number = num;
+        this.color = col;
+        this.odd = odd(num);
+        this.firstEighteen = firstEighteen(num);
+        this.section = section(num);
+        this.column = column(num);
+        this.wheelAngle = angle;
+        this.tablePosX = x;
+        this.tablePosY = y;
     }
 
     public int getNumber() {
         return number;
     }
 
-    public int getAngle() {
-        return angle;
-    }
-
     public String getColor() {
         return color;
+    }
+
+    public boolean getOdd() {
+        return odd;
+    }
+
+    public boolean getfirstEighteen() {
+        return firstEighteen;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public int getAngle() {
+        return wheelAngle;
+    }
+
+    public double getTablePosY() {
+        return tablePosY;
+    }
+
+    public double getTablePosX() {
+        return tablePosX;
+    }
+
+    // Constructor method to calculate whether number is odd.
+    private boolean odd(int num) {
+        if (num % 2 == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    // Constructor method to calculate whther number is in the firstEighteen positions.
+    private boolean firstEighteen(int num) {
+        for (int i = 1; i < 19; i++) {
+            if (i == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Constructor method to calculate which section numbers is in.
+    // 1 = first twelve, 2 = second twelve and 3 = third twelve.
+    private int section(int num) {
+        for (int i = 1; i < 13; i++) {
+            if (i == num) {
+                return 1;
+            }
+        }
+        for (int i = 13; i < 25; i++) {
+            if (i == num) {
+                return 2;
+            }
+        }
+        return 3;
+    }
+
+    // Constructor method to calculate which column number is in.
+    // 1 = column starting with 1, 2 = column starting with 2 3 = column starting with 3.
+    private int column(int num) {
+        for (int i = 1; i < 35; i+=3) {
+            if (i == num) {
+                return 1;
+            }
+        }
+        for (int i = 2; i < 36; i+=3) {
+            if (i == num) {
+                return 2;
+            }
+        }
+        return 3;
+    }
+
+/******************************* Unit Testing *******************************/
+
+    public static void main(String[] args) {
+        Number test = new Number();
+        // Test number is correctly assigned as odd/even.
+        assert(test.odd(1) == true);
+        assert(test.odd(2) == false);
+        // Test number is correctly assigned in firstEighteen.
+        assert(test.firstEighteen(1) == true);
+        assert(test.firstEighteen(18) == true);
+        assert(test.firstEighteen(19) == false);
+        assert(test.firstEighteen(36) == false);
+        // Test number is correctly assigned for section.
+        assert(test.section(1) == 1);
+        assert(test.section(12) == 1);
+        assert(test.section(13) == 2);
+        assert(test.section(24) == 2);
+        assert(test.section(25) == 3);
+        assert(test.section(36) == 3);
+        // Test number is correctly assigned for column.
+        assert(test.column(1) == 1);
+        assert(test.column(2) == 2);
+        assert(test.column(3) == 3);
+        assert(test.column(16) == 1);
+        assert(test.column(17) == 2);
+        assert(test.column(18) == 3);
+        assert(test.column(34) == 1);
+        assert(test.column(35) == 2);
+        assert(test.column(36) == 3);
+        System.out.println("All tests passed.");
     }
 }

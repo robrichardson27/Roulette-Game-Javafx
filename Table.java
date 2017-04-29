@@ -9,10 +9,12 @@ import javafx.scene.transform.*;
 public class Table {
 
     private Group table = new Group();
+    private NumberSet numberSet = new NumberSet();
 
     // array of buttons for betting
     public void makeTable() {
         drawGrid();
+
     }
 
     public Group getTable() {
@@ -37,7 +39,7 @@ public class Table {
     private void createRec(int cnt, double x, double y) {
         Rectangle r = new Rectangle(x, y, 55, 100);
         Group text = new Group();
-        for (Number n : Number.values()) {
+        for (Number n : numberSet.getNumberSet()) {
             if (n.getNumber() == cnt) {
                 if (n.getColor().equals("R")) {
                     r.setFill(Color.RED);
@@ -56,7 +58,6 @@ public class Table {
                 }
                 textNode.setFill(Color.YELLOW);
                 textNode.setFont(Font.font ("Tahoma", 30));
-                // textNode.getTransforms().add(new Rotate(180));
                 text.getChildren().add(textNode);
                 table.getChildren().add(r);
                 table.getChildren().add(text);

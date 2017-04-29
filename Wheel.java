@@ -19,6 +19,7 @@ public class Wheel {
     private static final double START_ANGLE = 85.135135135f;
 
     private Group wheel = new Group();
+    private NumberSet numberSet = new NumberSet();
 
     public void makeWheel() {
         drawDecorationBottom();
@@ -62,7 +63,7 @@ public class Wheel {
     private void drawNumbers() {
         Group text = new Group();
         // Iterates through enum class of numbers.
-        for (Number n : Number.values()) {
+        for (Number n : numberSet.getNumberSet()) {
             Text textNode = new Text(""+n.getNumber());
             int centreX = 400;
             int centreY = 380;
@@ -91,7 +92,6 @@ public class Wheel {
 
         wheel.getChildren().add(decoration);
     }
-
     // Draws decoration on top of wheel.
     private void drawDecorationTop() {
         Group decoration = new Group();
