@@ -1,4 +1,4 @@
-/* Wheel class draws the roulette wheel */
+/* Graphic object for wheel */
 
 import javafx.scene.text.*;
 import javafx.scene.paint.Color;
@@ -12,13 +12,13 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Stop;
 
 public class Wheel {
-
+    // Group contains all graphical elements for the wheel.
+    private Group wheel = new Group();
     // Angle per segment of roulette wheel.
     private static final double ANGLE = 9.72972973f;
     // Sets the start angle for drawing the wheel segments.
     private static final double START_ANGLE = 85.135135135f;
-
-    private Group wheel = new Group();
+    // NumberSet used to draw text onto wheel.
     private NumberSet numberSet = new NumberSet();
 
     public void makeWheel() {
@@ -59,10 +59,9 @@ public class Wheel {
         }
         wheel.getChildren().add(segments);
     }
-    // Draws the numbers on top of the segments.
+    // Draws the numbers on top of the segments using the NumberSet.
     private void drawNumbers() {
         Group text = new Group();
-        // Iterates through enum class of numbers.
         for (Number n : numberSet.getNumberSet()) {
             Text textNode = new Text(""+n.getNumber());
             int centreX = 400;

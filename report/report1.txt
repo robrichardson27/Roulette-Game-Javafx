@@ -41,3 +41,12 @@ according to the enum class Number.
 I have decided to pause on the implementation to review how my classes are interacting with one another.
 I need to refactor my Numbers class as numbers contain all the information for the logic and graphic of the
 game. I am going to refactor the Number class and enable auto-testing.
+
+To improve the game it would have been simpler to load an image for the table and
+roulette wheel then add animation to the wheel. I could have used an grid pane
+ontop of the table image to use as a reference to seecting bets to play. This would
+have removed alot of code from the game. However I decided to keep the game as
+is so to gain experience from placing and creating my own shapes.
+
+I've decided to refactor the Table class so that each rectange used is an individual
+object that can be referenced for its position.
