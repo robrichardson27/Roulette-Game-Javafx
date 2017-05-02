@@ -7,10 +7,11 @@ import javafx.geometry.*;
 import javafx.scene.control.*;
 import javafx.scene.text.*;
 import javafx.scene.transform.*;
+import java.util.*;
+
 
 public class Table {
 
-    // private List<Rectangle, Number
     // Group contains all graphical elements for the table.
     private Group table = new Group();
     // NumberSet used to draw color..
@@ -21,7 +22,7 @@ public class Table {
     private static final double START_X = 850;
     private static final double START_Y = 400;
 
-    public void makeTable() {
+    public Table() {
         drawGrid();
     }
 
@@ -96,7 +97,6 @@ public class Table {
         table.getChildren().add(textNode3);
         table.getChildren().add(textNode4);
     }
-
 
     private void createZero() {
         Rectangle r = new Rectangle(START_X-WIDTH, START_Y-(HEIGHT*2), WIDTH, HEIGHT*3);

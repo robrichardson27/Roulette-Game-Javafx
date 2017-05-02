@@ -48,5 +48,11 @@ ontop of the table image to use as a reference to seecting bets to play. This wo
 have removed alot of code from the game. However I decided to keep the game as
 is so to gain experience from placing and creating my own shapes.
 
-I've decided to refactor the Table class so that each rectange used is an individual
-object that can be referenced for its position.
+I've decided to create BetSquare class that will hold the position of each individual
+rectangle that can be bet on, the issue here is that every rectangle has different
+win logic. I should refactor the Table class to grab the set co-ordinates of eachbetSquare from
+this new class, but will leave as is for now.
+
+I have alse refactored the main class to attempt to remove the game logic to
+a Betting class, I pass a player to this class to allow for multiple players
+in the future.

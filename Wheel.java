@@ -21,7 +21,7 @@ public class Wheel {
     // NumberSet used to draw text onto wheel.
     private NumberSet numberSet = new NumberSet();
 
-    public void makeWheel() {
+    public Wheel() {
         drawDecorationBottom();
         drawSegments();
         drawNumbers();

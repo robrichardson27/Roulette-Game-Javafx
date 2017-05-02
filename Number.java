@@ -13,14 +13,12 @@ public class Number {
 
     // Graphics data.
     private int wheelAngle;
-    private double tablePosX;
-    private double tablePosY;
 
     // Empty constructor for returning results of a bet.
     public Number() {}
 
     // Constructor used for initialising the numbers with their data.
-    public Number(int num, String col, int angle, double x, double y) {
+    public Number(int num, String col, int angle) {
         this.number = num;
         this.color = col;
         this.odd = odd(num);
@@ -28,8 +26,6 @@ public class Number {
         this.section = section(num);
         this.column = column(num);
         this.wheelAngle = angle;
-        this.tablePosX = x;
-        this.tablePosY = y;
     }
 
     public int getNumber() {
@@ -58,14 +54,6 @@ public class Number {
 
     public int getAngle() {
         return wheelAngle;
-    }
-
-    public double getTablePosY() {
-        return tablePosY;
-    }
-
-    public double getTablePosX() {
-        return tablePosX;
     }
 
     // Constructor method to calculate whether number is odd.
